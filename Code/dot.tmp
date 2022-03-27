@@ -1,0 +1,23 @@
+digraph p_User {
+size="8,10";
+  GT [shape=box,style=dotted,label="User"];
+  GT -> S3;
+	S3 -> S2  [color=black,style=bold,label="out!req2log,sndbit"];
+	S2 -> S3  [color=black,style=bold,label="in?dis_log_pg,recbit"];
+}
+digraph p_Login {
+size="8,10";
+  GT [shape=box,style=dotted,label="Login"];
+  GT -> S3;
+	S3 -> S2  [color=black,style=bold,label="in?req2log,recbit"];
+	S2 -> S3  [color=black,style=bold,label="out!dis_log_pg,recbit"];
+}
+digraph init {
+size="8,10";
+  GT [shape=box,style=dotted,label="init"];
+  GT -> S1;
+	S1 -> S2  [color=black,style=solid,label="(run User(toU,toL))"];
+	S2 -> S3  [color=black,style=solid,label="(run Login(toL,toU))"];
+	S3 -> S0  [color=black,style=solid,label="-end-"];
+  S3 [color=blue,style=bold,shape=box];
+}
